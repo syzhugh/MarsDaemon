@@ -8,13 +8,14 @@ import com.marswin89.marsdaemon.DaemonConfigurations;
 /**
  * Implementation 1<br/>
  * override one method is ok.<br/>
- *
+ * <p>
  * Created by Mars on 12/24/15.
  */
 public class MyApplication1 extends DaemonApplication {
 
     /**
      * you can override this method instead of {@link android.app.Application attachBaseContext}
+     *
      * @param base
      */
     @Override
@@ -25,6 +26,7 @@ public class MyApplication1 extends DaemonApplication {
 
     /**
      * give the configuration to lib in this callback
+     *
      * @return
      */
     @Override
@@ -45,7 +47,7 @@ public class MyApplication1 extends DaemonApplication {
     }
 
 
-    class MyDaemonListener implements DaemonConfigurations.DaemonListener{
+    class MyDaemonListener implements DaemonConfigurations.DaemonListener {
         @Override
         public void onPersistentStart(Context context) {
         }

@@ -3,13 +3,20 @@ package com.marswin89.marsdaemon.demo;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 /**
  * DO NOT do anything in this Service!<br/>
- *
+ * <p>
  * Created by Mars on 12/24/15.
  */
-public class Service2 extends Service{
+public class Service2 extends Service {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.i("info", "Service2:onCreate----------------------");
+    }
 
     @Override
     public IBinder onBind(Intent intent) {
