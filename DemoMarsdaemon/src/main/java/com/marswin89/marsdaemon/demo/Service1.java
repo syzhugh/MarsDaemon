@@ -29,9 +29,7 @@ public class Service1 extends Service {
         super.onCreate();
         Log.i("info", "Service1:onCreate----------------------");
         //初始化push推送服务
-        if (shouldInit()) {
-//            MiPushClient.registerPush(this, APP_ID, APP_KEY);
-        }
+        MiPushClient.registerPush(this, APP_ID, APP_KEY);
         //打开Log
         LoggerInterface newLogger = new LoggerInterface() {
 
@@ -52,12 +50,14 @@ public class Service1 extends Service {
     }
 
     private boolean shouldInit() {
+        Log.i("info", "Service1:shouldInit----------------------");
         ActivityManager am = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE));
         List<ActivityManager.RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
         String mainProcessName = getPackageName();
         int myPid = Process.myPid();
         for (ActivityManager.RunningAppProcessInfo info : processInfos) {
             if (info.pid == myPid && mainProcessName.equals(info.processName)) {
+                Log.i("info", "Service1:shouldInit----------------------");
                 return true;
             }
         }
