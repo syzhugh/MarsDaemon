@@ -20,6 +20,8 @@
 
     <!-- 这里com.xiaomi.mipushdemo改成app的包名 -->
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
 
     <application
         android:name=".MyApplication1"
@@ -39,8 +41,30 @@
         </activity>
 
         <service
+            android:name=".newidea.IdeaService"
+            android:process=":process1" />
+        <receiver android:name=".newidea.IdeaReceiver">
+            <intent-filter>
+                <action android:name="bbbb" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
+                <action android:name="android.intent.action.BATTERY_OKAY" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+                <action android:name="android.intent.action.WALLPAPER_CHANGED" />
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.HEADSET_PLUG" />
+            </intent-filter>
+        </receiver>
+
+        <service
             android:name=".Service1"
             android:process=":process1" />
+
         <receiver
             android:name=".Receiver1"
             android:process=":process1">
