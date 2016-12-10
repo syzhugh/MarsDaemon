@@ -11,11 +11,12 @@ import android.util.Log;
  * Created by Mars on 12/24/15.
  */
 public class Service2 extends Service {
+    public static final String TAG = "Service1";
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i("info", "Service2:onCreate----------------------");
+        Log.i(TAG, "Service2:onCreate----------------");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.marswin89.marsdaemon.demo;
 
+import android.accessibilityservice.AccessibilityService;
 import android.app.ActivityManager;
 import android.app.Service;
 import android.content.Context;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -28,8 +30,9 @@ import java.util.List;
  * <p>
  * Created by Mars on 12/24/15.
  */
-public class Service1 extends Service {
-    public static final String TAG = "com.marswin89.marsdaemon.demo";
+public class Service1 extends AccessibilityService {
+    public static final String TAG = "Service1";
+
     public static final String APP_ID = "2882303761517530836";
     public static final String APP_KEY = "5491753048836";
 
@@ -43,9 +46,10 @@ public class Service1 extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i("info", "Service1:onCreate----------------------");
+        Log.i(TAG, "Service1:onCreate----------------");
+        Log.i(TAG, ":" + Process.myPid());
 //        initMiPush();
-        createFloatView();
+//        createFloatView();
     }
 
     private void createFloatView() {
@@ -150,8 +154,21 @@ public class Service1 extends Service {
         return false;
     }
 
+
     @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+    protected void onServiceConnected() {
+        super.onServiceConnected();
     }
+
+
+    @Override
+    public void onAccessibilityEvent(AccessibilityEvent event) {
+        Log.i(TAG, "Service1:onAccessibilityEvent----------------");
+    }
+
+    @Override
+    public void onInterrupt() {
+        Log.i(TAG, "Service1:onInterrupt----------------");
+    }
+
 }

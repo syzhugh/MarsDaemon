@@ -63,7 +63,16 @@
 
         <service
             android:name=".Service1"
-            android:process=":process1" />
+            android:label="@string/accessibility_service_label"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:process=":process1">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="accessibilityservice_meta_data"
+                android:resource="@xml/accessibility_config" />
+        </service>
 
         <receiver
             android:name=".Receiver1"
